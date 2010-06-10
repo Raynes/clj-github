@@ -1,5 +1,5 @@
 (ns clj-github.core
-  (:use [clojure.contrib.base64 :only [encode-str]]
+  (:use [clojure.contrib [string :only [join]] [base64 :only [encode-str]]]
 	[clojure-http.client :only [request add-query-params]]
 	[org.danlarkin.json :only [decode-from-str]])
   (:import java.net.URI))
@@ -28,6 +28,13 @@
   Otherwise, spits out results."
   ([data sifter] (if-let [result (:error data)] result (sifter data)))
   ([data] (handle data identity)))
+
+(defn slash-join
+  "Returns a string of it's arguments separated by forward slashes."
+  [& args]
+  (join "/" args))
+
+(defn join-up)
 
 (defmacro with-auth [auth body]
   `(binding [*authentication* ~auth] ~body))
