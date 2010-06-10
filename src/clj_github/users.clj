@@ -1,7 +1,8 @@
-(ns clj-github.users
+(ns #^{:doc "Implements the API functions described here: http://develop.github.com/p/users.html"}
+  clj-github.users
   (:use [clj-github.core]))
 
-(defn search
+(defn search-users
   "Searches for all users on github with term in their name."
   [term]
   (make-request (str "/user/search/" term)))
