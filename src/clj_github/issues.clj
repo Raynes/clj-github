@@ -12,3 +12,9 @@
   "List of issues a project has."
   [user repo state]
   (handle (make-request (str "/issues/list/" (slash-join user repo state))) :issues))
+
+(defn show-issue
+  "Shows the data on an individual issue. Despite shoddy naming, 'number' is actually a string
+  depicting a number. ;)"
+  [user repo number]
+  (handle (make-request (str "/issues/show/" (slash-join user repo number))) :issue))
