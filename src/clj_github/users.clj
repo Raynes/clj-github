@@ -9,5 +9,11 @@
 (defn get-user-info
   "Grabs information about a specific user."
   [user]
-  (let [result (make-request (str "/user/show/" user))]
-    (if-let [error (:error result)] error (:user result))))
+  (handle (make-request (str "/user/show/" user)) :user))
+
+(defn user-set
+  "Set certain information for a user. Accepted inputs for target are
+  :name, :email, :blog, :company, and :location."
+  [user target value]
+  {:pre [(#{"name" "email" "blog" "company" "location"} target)]}
+  (handle (make-request (str "/user/show/" user) :type "POST" :data {(str "values[" target "]") value})))
