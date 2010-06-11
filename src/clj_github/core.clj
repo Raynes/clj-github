@@ -7,16 +7,22 @@
 (defn create-url [rest user pass]
   (str (if-not (and user pass)
 	 (URI. "http" "github.com" (str "/api/v2/json" rest) nil)
-	 (URI. "http" (str user ":" pass) "github.com" 80 (str "/api/v2/json" rest) nil nil))))
+	 (URI. "http" (str user ":" pass) "github.com" 80 (str "/api/v2/json/" rest) nil nil))))
 
 (def #^{:doc "This var will be rebound to hold authentication information."}
      *authentication* {})
 
+(defn slash-join
+  "Returns a string of it's arguments separated by forward slashes."
+  [& args]
+  (join "/" args))
+
 (defn make-request
-  "Constructs a basic authentication request."
-  [url & {:keys [type data] :or {type "GET" data {}}}]
+  "Constructs a basic authentication request. Path is either aseq of URL segments that will
+  be joined together with slashes, or a full string depicting a path that will be used directly."
+  [path & {:keys [type data] :or {type "GET" data {}}}]
   (-> (request (add-query-params
-		(create-url url
+		(create-url (if (string? path) path (apply slash-join (remove nil? path)))
 			    (:user *authentication*)
 			    (:pass *authentication*))
 		data)
@@ -30,11 +36,6 @@
   Otherwise, spits out results."
   ([data sifter] (if-let [result (:error data)] result (sifter data)))
   ([data] (handle data identity)))
-
-(defn slash-join
-  "Returns a string of it's arguments separated by forward slashes."
-  [& args]
-  (join "/" args))
 
 (defn join-up)
 
