@@ -5,10 +5,12 @@
   (:import java.net.URI))
 
 (defn create-url [rest user pass]
-  (str (URI. "http" (str user ":" pass) "github.com" 80 (str "/api/v2/json" rest) nil nil)))
+  (str (if-not (and user pass)
+	 (URI. "http" "github.com" (str "/api/v2/json" rest) nil)
+	 (URI. "http" (str user ":" pass) "github.com" 80 (str "/api/v2/json" rest) nil nil))))
 
 (def #^{:doc "This var will be rebound to hold authentication information."}
-     *authentication*)
+     *authentication* {})
 
 (defn make-request
   "Constructs a basic authentication request."
