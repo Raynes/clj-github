@@ -38,3 +38,10 @@
   "Reopens a previously closed issue."
   [user repo number]
   (handle (make-request (str "/issues/reopen/" (slash-join user repo number))) :issue))
+
+(defn edit-issue
+  "Edit an issue."
+  [user repo number & {:keys [title body]}]
+  (handle (make-request (str "/issues/edit/" (slash-join user repo number))
+			:data (remove (comp nil? val) {"body" body "title" title}))
+    :issue))
