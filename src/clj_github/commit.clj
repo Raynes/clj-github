@@ -5,4 +5,4 @@
 (defn list-commits
   "Get the latest commits in a branch of a repository."
   [user repo branch]
-  (handle (make-request ["/commits/list" user repo branch]) :commits))
+  (handle (make-request ["commits/list" user repo branch]) :commits))

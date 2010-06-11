@@ -26,7 +26,7 @@
 (defn open-issue
   "Open an issue."
   [user repo title body]
-  (handle (make-request ["issues/open" user repo] :data {"title" title "body" body}) :issue))
+  (handle (make-request ["issues/open" user repo] :type "POST" :data {"title" title "body" body}) :issue))
 
 (defn close-issue
   "Closes an issue."
@@ -42,6 +42,7 @@
   "Edit an issue."
   [user repo number & {:keys [title body]}]
   (handle (make-request ["issues/edit" user repo number]
+			:type "POST"
 			:data (remove (comp nil? val) {"body" body "title" title}))
     :issue))
 
