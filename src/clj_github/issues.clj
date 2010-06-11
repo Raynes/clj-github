@@ -67,3 +67,10 @@
 			     (slash-join user repo label)
 			     (when number (str "/" number))))
     :labels))
+
+(defn comment-issue
+  "Comment on an issue."
+  [user repo number comment]
+  (handle (make-request (str "/issues/comment/" (slash-join user repo number))
+			:data {:comment comment})
+    :comment))
