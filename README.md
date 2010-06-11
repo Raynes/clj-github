@@ -16,6 +16,8 @@ In clj-github.core, I've defined a helper-macro for this called with-auth. Here 
 
 While *authentication* var could have been replaced with each of the API functions taking an auth map explicitly, I think the rebinding scheme that clj-github uses is better suited for this particular task, simply because it's much easier to chain API calls together without having an extra parameter to pass to each of them.
 
+API functions are sectioned into categories and placed in different files. Have fun exploring. :)
+
 ## Installation
 
 Once this is in a usable state, I'll put it on Clojars. You'll be able to get it the normal Leiningen way.
