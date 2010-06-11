@@ -18,3 +18,23 @@
   depicting a number. ;)"
   [user repo number]
   (handle (make-request (str "/issues/show/" (slash-join user repo number))) :issue))
+
+(defn issue-comments
+  "List of comments on an issue. number is a string."
+  [user repo number]
+  (handle (make-request (str "/issues/comments/" (slash-join user repo number))) :comments))
+
+(defn open-issue
+  "Open an issue."
+  [user repo title body]
+  (handle (make-request (str "/issues/open/" user "/" repo) :data {"title" title "body" body}) :issue))
+
+(defn close-issue
+  "Closes an issue."
+  [user repo number]
+  (handle (make-request (str "/issues/close/" (slash-join user repo number))) :issue))
+
+(defn reopen-issue
+  "Reopens a previously closed issue."
+  [user repo number]
+  (handle (make-request (str "/issues/reopen/" (slash-join user repo number))) :issue))
