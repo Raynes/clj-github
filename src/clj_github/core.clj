@@ -7,7 +7,7 @@
 (defn create-url [rest auth]
   (str (if (seq auth)
 	 (URI. "http" (str (:user auth) ":" (:pass auth)) "github.com" 80 (str "/api/v2/json/" rest) nil nil)
-	 (URI. "http" "github.com" (str "/api/v2/json" rest) nil))))
+	 (URI. "http" "github.com" (str "/api/v2/json/" rest) nil))))
 
 (def #^{:doc "This var will be rebound to hold authentication information."}
      *authentication* {})
@@ -15,7 +15,7 @@
 (defn slash-join
   "Returns a string of it's arguments separated by forward slashes."
   [& args]
-  (str "/" (join "/" args)))
+  (join "/" args))
 
 (defn make-request
   "Constructs a basic authentication request. Path is either aseq of URL segments that will
@@ -35,8 +35,6 @@
   Otherwise, spits out results."
   ([data sifter] (if-let [result (:error data)] result (sifter data)))
   ([data] (handle data identity)))
-
-(defn join-up)
 
 (defmacro with-auth [auth body]
   `(binding [*authentication* ~auth] ~body))
