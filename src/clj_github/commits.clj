@@ -1,5 +1,5 @@
 (ns #^{:doc "Implements the API functions described here: http://develop.github.com/p/commits.html"}
-  clj-github.commit
+  clj-github.commits
   (:use [clj-github.core]))
 
 (defn list-commits
