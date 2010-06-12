@@ -4,10 +4,10 @@
 	[org.danlarkin.json :only [decode-from-str]])
   (:import java.net.URI))
 
-(defn create-url [rest user pass]
-  (str (if-not (and user pass)
-	 (URI. "http" "github.com" (str "/api/v2/json" rest) nil)
-	 (URI. "http" (str user ":" pass) "github.com" 80 (str "/api/v2/json/" rest) nil nil))))
+(defn create-url [rest auth]
+  (str (if (seq auth)
+	 (URI. "http" (str (:user auth) ":" (:pass auth)) "github.com" 80 (str "/api/v2/json/" rest) nil nil)
+	 (URI. "http" "github.com" (str "/api/v2/json" rest) nil))))
 
 (def #^{:doc "This var will be rebound to hold authentication information."}
      *authentication* {})
@@ -15,7 +15,7 @@
 (defn slash-join
   "Returns a string of it's arguments separated by forward slashes."
   [& args]
-  (join "/" args))
+  (str "/" (join "/" args)))
 
 (defn make-request
   "Constructs a basic authentication request. Path is either aseq of URL segments that will
@@ -23,8 +23,7 @@
   [path & {:keys [type data] :or {type "GET" data {}}}]
   (-> (request (add-query-params
 		(create-url (if (string? path) path (apply slash-join (remove nil? path)))
-			    (:user *authentication*)
-			    (:pass *authentication*))
+			    *authentication*)
 		data)
 	       type)
       :body-seq
