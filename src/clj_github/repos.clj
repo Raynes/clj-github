@@ -74,3 +74,59 @@
   [repo visibility]
   (make-request ["repos/set" visibility repo] :type "POST" :sift :repository))
 
+
+(defn list-deploy-keys
+  "Get a list of deploy keys setup for a repository."
+  [repo]
+  (make-request ["repos/keys" repo] :sift :public_keys))
+
+(defn add-deploy-key
+  "Add a deploy key to a repo."
+  [repo title key]
+  (make-request ["repos/key" repo "add"] :data {"title" title "key" key} :type "POST" :sift :public_keys))
+
+(defn remove-deploy-key
+  "Remove a deploy key from a repo."
+  [repo id]
+  (make-request ["repos/key" repo "remove"] :type "POST" :data {"id" id} :sift :public_keys))
+
+(defn list-collaborators
+  "Get a list of collaborators on a repo."
+  [user repo]
+  (make-request ["repos/show" user repo "collaborators"] :sift :collaborators))
+
+(defn add-collaborator
+  "Add a collaborator to a project."
+  [user repo]
+  (make-request ["repos/collaborators" repo "add" user] :type "POST" :sift :collaborators))
+
+(defn remove-collaborator
+  "Remove a collaborator from a project."
+  [user repo]
+  (make-request ["repos/collaborators" repo "remove" user] :type "POST" :sift :collaborators))
+
+(defn list-pushable
+  "List of repos that are not your own that you can push to. Must be authenticated for this
+  to return something meaningful."
+  [] (make-request "repos/pushable" :sift :repositories))
+
+(defn list-contributors
+  "List of people who have contributed to a project. Default value of include-anon? is false.
+  If set to true, will include all non-users who have contributed to this project."
+  [user repo & {include-anon? :include-anon? :or {include-anon? false}}]
+  (make-request ["repos/show" user repo "contributors" include-anon?] :sift :contributors))
+
+(defn show-network
+  "Look at a repo's full network."
+  [user repo]
+  (make-request ["repos/show" user repo "network"] :sift :network))
+
+(defn show-languages
+  "Look at the languages used by a project. Values are in bytes calculated."
+  [user repo]
+  (make-request ["repos/show" user repo "languages"] :sift :languages))
+
+(defn list-tags
+  "List of tags on a repo."
+  [user repo]
+  (make-request ["repos/show" user repo "tags"] :sift :tags))
