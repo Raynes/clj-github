@@ -7,9 +7,9 @@
   will be considered a path to a file, and list-commits will return the commits for
   that file. There should be no trailing slashes in the path."
   [user repo branch & [path]]
-  (handle (make-request ["commits/list" user repo branch path]) :commits))
+  (make-request ["commits/list" user repo branch path] :sift :commits))
 
 (defn show-commit
   "Show data about a specific commit."
   [user repo sha]
-  (handle (make-request ["commits/show" user repo sha]) :commit))
+  (make-request ["commits/show" user repo sha] :sift :commit))
