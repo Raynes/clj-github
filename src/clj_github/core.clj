@@ -29,7 +29,7 @@
   The path should never start with a forward slash. It's added automatically."
   [path & {:keys [type data sift] :or {type "GET" data {}}}]
   (-> (request (add-query-params
-                (create-url (if (string? path) path (apply slash-join (remove nil? path)))
+                (create-url (if (string? path) path (apply slash-join (filter identity path)))
                             *authentication*)
                 data)
 	       type)
