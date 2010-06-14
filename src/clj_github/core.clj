@@ -19,7 +19,8 @@
 
 (defn make-request
   "Constructs a basic authentication request. Path is either aseq of URL segments that will
-  be joined together with slashes, or a full string depicting a path that will be used directly."
+  be joined together with slashes, or a full string depicting a path that will be used directly.
+  The path should never start with a forward slash. It's added automatically."
   [path & {:keys [type data] :or {type "GET" data {}}}]
   (-> (request (add-query-params
 		(create-url (if (string? path) path (apply slash-join (remove nil? path)))
