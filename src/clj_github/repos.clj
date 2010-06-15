@@ -45,14 +45,13 @@
 
 (defn create-repo
   "Create a repository. You need to supply at least :name, but you can supply as many of
-  :description, :homepage, :public, as you want. Note: :public is 0 for private, and 1 for
-  public."
+  :description, :homepage, :public, as you want."
   [& {:keys [name public homepage description]}]
   {:pre [(not (nil? name))]}
   (make-request "repos/create"
                 :type "POST"            ; obviously.
                 :data {"name" name
-                       "public" public
+                       "public" (t-to-n public)
                        "homepage" homepage
                        "description" description}
                 :sift :repository))
