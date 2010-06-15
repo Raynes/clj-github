@@ -12,7 +12,7 @@
   [user repo sha path & {meta? :meta?}]
   (make-request ["blob/show" user repo sha path] :data {"meta" (t-to-n meta?)} :sift :blob))
 
-(defn list-all-blobs
+(defn show-all-blobs
   "Get a list of all blobs for a specific sha."
   [user repo sha]
   (make-request ["blob/all" user repo sha] :sift :blobs))

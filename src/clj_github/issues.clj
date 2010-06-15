@@ -8,7 +8,7 @@
   [user repo state term]
   (make-request ["issues/search " user repo state term] :sift :issues))
 
-(defn list-issues
+(defn show-issues
   "List of issues a project has."
   [user repo state]
   (make-request ["issues/list" user repo state] :sift :issues))

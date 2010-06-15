@@ -23,7 +23,7 @@
                 :data {(str "values[" key "]") value}
                 :sift :repository))
 
-(defn list-repos
+(defn show-repos
   "List all the repos a user has."
   [user]
   (make-request ["repos/show" user] :sift :repositories))
@@ -75,7 +75,7 @@
   (make-request ["repos/set" visibility repo] :type "POST" :sift :repository))
 
 
-(defn list-deploy-keys
+(defn show-deploy-keys
   "Get a list of deploy keys setup for a repository."
   [repo]
   (make-request ["repos/keys" repo] :sift :public_keys))
@@ -90,7 +90,7 @@
   [repo id]
   (make-request ["repos/key" repo "remove"] :type "POST" :data {"id" id} :sift :public_keys))
 
-(defn list-collaborators
+(defn show-collaborators
   "Get a list of collaborators on a repo."
   [user repo]
   (make-request ["repos/show" user repo "collaborators"] :sift :collaborators))
@@ -105,12 +105,12 @@
   [user repo]
   (make-request ["repos/collaborators" repo "remove" user] :type "POST" :sift :collaborators))
 
-(defn list-pushable
+(defn show-pushable
   "List of repos that are not your own that you can push to. Must be authenticated for this
   to return something meaningful."
   [] (make-request "repos/pushable" :sift :repositories))
 
-(defn list-contributors
+(defn show-contributors
   "List of people who have contributed to a project. Default value of include-anon? is false.
   If set to true, will include all non-users who have contributed to this project."
   [user repo & {include-anon? :include-anon? :or {include-anon? false}}]
@@ -126,7 +126,7 @@
   [user repo]
   (make-request ["repos/show" user repo "languages"] :sift :languages))
 
-(defn list-tags
+(defn show-tags
   "List of tags on a repo."
   [user repo]
   (make-request ["repos/show" user repo "tags"] :sift :tags))

@@ -7,7 +7,7 @@
   [term]
   (make-request ["user/search" term] :sift :users))
 
-(defn get-user-info
+(defn show-user-info
   "Grabs information about a specific user."
   [user]
   (make-request ["user/show" user] :sift :user))
@@ -19,12 +19,12 @@
   {:pre [(#{"name" "email" "blog" "company" "location"} target)]}
   (make-request ["user/show" user] :type "POST" :data {(str "values[" target "]") value} :sift :user))
 
-(defn following
+(defn show-following
   "Get a list of the users that a user is following."
   [user]
   (make-request ["user/show" user "following"] :sift :users))
 
-(defn followers
+(defn show-followers
   "Get a list of users that are following a user."
   [user]
   (make-request ["user/show" user "followers"] :sift :users))
@@ -39,7 +39,7 @@
   [user]
   (make-request ["user/unfollow" user] :type "POST" :sift :users))
 
-(defn watching
+(defn show-watching
   "Get a list of repos that user is watching."
   [user]
   (make-request ["repos/watched" user] :sift :repositories))
