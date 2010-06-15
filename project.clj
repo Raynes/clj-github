@@ -1,5 +1,5 @@
 (defproject clj-github "1.0.0-SNAPSHOT"
-  :description "FIXME: write"
+  :description "Bindings to the Github and Gist API."
   :dependencies [[org.clojure/clojure "1.2.0-master-SNAPSHOT"]
 		 [clojure-http-client "1.1.0-SNAPSHOT"]
                  [org.clojure/clojure-contrib "1.2.0-SNAPSHOT"]
