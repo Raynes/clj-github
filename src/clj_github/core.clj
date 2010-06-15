@@ -4,10 +4,13 @@
 	[org.danlarkin.json :only [decode-from-str]])
   (:import java.net.URI))
 
-(defn create-url [rest auth]
-  (str (if (seq auth)
-	 (URI. "http" (str (:user auth) ":" (:pass auth)) "github.com" 80 (str "/api/v2/json/" rest) nil nil)
-	 (URI. "http" "github.com" (str "/api/v2/json/" rest) nil))))
+(defn create-url [rest auth gist? & {special :special}]
+  (let [base-dom (if gist? "gist.github.com" "github.com")
+        v (if gist? "v1" "v2")
+        base-route (if special (str special rest) (str "/api/" v "/json/" rest))]
+    (str (if (seq auth)
+           (URI. "http" (str (:user auth) ":" (:pass auth)) base-dom 80 base-route nil nil)
+           (URI. "http" base-dom base-route nil)))))
 
 (def #^{:doc "This var will be rebound to hold authentication information."}
      *authentication* {})
@@ -32,15 +35,20 @@
   "Constructs a basic authentication request. Path is either aseq of URL segments that will
   be joined together with slashes, or a full string depicting a path that will be used directly.
   The path should never start with a forward slash. It's added automatically."
-  [path & {:keys [type data sift raw?] :or {type "GET" data {} raw? false}}]
+  [path & {:keys [type data sift raw? gist? special] :or {type "GET" data {} raw? false gist? false}}]
   (let [req (request (add-query-params
                       (create-url (if (string? path) path (apply slash-join (filter identity path)))
-                                  *authentication*)
+                                  *authentication* gist? :special special)
                       data)
                      type)]
     (if raw?
-      (-> req :body-seq first)
+      (->> req :body-seq (interpose "\n") (apply str))
       (-> req :body-seq first decode-from-str (handle sift)))))
+
+(defn make-gist-request
+  "Constructs a gist API request. Same as make-request, just using the gist URL instead."
+  [path & rest]
+  (apply make-request path :gist? true rest))
 
 (defmacro with-auth [auth body]
   `(binding [*authentication* ~auth] ~body))
