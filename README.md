@@ -22,7 +22,7 @@ API functions are sectioned into categories and placed in different files. Autod
 
 ## Installation
 
-Once this is in a usable state, I'll put it on Clojars. You'll be able to get it the normal Leiningen way.
+It's on clojars: http://clojars.org/clj-github
 
 ## License
 
