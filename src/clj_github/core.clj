@@ -43,12 +43,14 @@
                      type)]
     (if raw?
       (->> req :body-seq (interpose "\n") (apply str))
-      (-> req :body-seq first decode-from-str (handle sift)))))
-
-(defn make-gist-request
-  "Constructs a gist API request. Same as make-request, just using the gist URL instead."
-  [path & rest]
-  (apply make-request path :gist? true rest))
+      (try (-> req :body-seq first decode-from-str (handle sift))
+           (catch Exception e
+             (if (.startsWith "java.lang.Exception: EOF while reading" (.getMessage e))
+               (str "If you're seeing this message, it means that Github threw down a "
+                    "Page Not Found page that could not be parsed as JSON. This is usually "
+                    "caused by giving invalid information that caused the URL to route to an "
+                    "unknown page.")
+               (throw e)))))))
 
 (defmacro with-auth [auth body]
   `(binding [*authentication* ~auth] ~body))

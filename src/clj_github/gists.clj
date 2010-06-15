@@ -2,6 +2,11 @@
   clj-github.gist
   (:use clj-github.core))
 
+(defn- make-gist-request
+  "Constructs a gist API request. Same as make-request, just using the gist URL instead."
+  [path & rest]
+  (apply make-request path :gist? true rest))
+
 (defn show-gist-meta
   "Get a gist's metadata."
   [id]
