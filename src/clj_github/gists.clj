@@ -26,9 +26,9 @@
   "Create a new gist. You can supply as many filename -> contents pairs as you like.
   Syntax highlighting is determined by extension."
   [& files]
-  (make-gist-request "new"
-                     :type "POST"
-                     :data (into {}
-                                 (for [[k v] (partition 2 files)]
-                                   [(str "files[" k "]") v]))
-                     :sift :gists))
+  (first (make-gist-request "new"
+                            :type "POST"
+                            :data (into {}
+                                        (for [[k v] (partition 2 files)]
+                                          [(str "files[" k "]") v]))
+                            :sift :gists)))
