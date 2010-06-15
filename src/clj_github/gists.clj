@@ -1,5 +1,5 @@
 (ns #^{:doc "Implements the API functions described here: http://develop.github.com/p/gist.html"}
-  clj-github.gist
+  clj-github.gists
   (:use clj-github.core))
 
 (defn- make-gist-request
