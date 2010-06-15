@@ -1,4 +1,6 @@
-(ns clj-github.core
+(ns #^{:doc "Core of clj-github. This namespace is used by the API files. Only thing useful
+            it provides to users is the with-auth convenience function."}
+  clj-github.core
   (:use [clojure.contrib [string :only [join]] [base64 :only [encode-str]]]
 	[clojure-http.client :only [request add-query-params]]
 	[org.danlarkin.json :only [decode-from-str]])
