@@ -18,7 +18,7 @@ While *authentication* var could have been replaced with each of the API functio
 
 It's worth it to note that authentication is not enforced by clj-github. If you do not wrap API calls in with-auth, clj-github will not complain, even if the particular API function your calling requires that you be autheticated to use it. Rather, the API will error out with "not authorizied" or something. No errors are ever thrown by clj-github. It simply returns the error message given by the API. The only way to know if something requires authentication is to look it up in the API docs. After everything is finished, I'll add notices detailing what requires authentication and what doesn't to docstrings.
 
-API functions are sectioned into categories and placed in different files. Autodoc-generated documentation is [http://raynes.github.com/clj-github/](here). Have fun exploring. :)
+API functions are sectioned into categories and placed in different files. Autodoc-generated documentation is [here](http://raynes.github.com/clj-github/). Have fun exploring. :)
 
 ## Installation
 
