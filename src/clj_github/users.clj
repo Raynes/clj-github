@@ -14,7 +14,7 @@
 
 (defn user-set
   "Set certain information for a user. Accepted inputs for target are
-  :name, :email, :blog, :company, and :location."
+  name, email, blog, company, and location."
   [user target value]
   {:pre [(#{"name" "email" "blog" "company" "location"} target)]}
   (make-request ["user/show" user] :type "POST" :data {(str "values[" target "]") value} :sift :user))

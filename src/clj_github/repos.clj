@@ -44,9 +44,9 @@
   (make-request ["repos/fork" user repo] :sift :repository))
 
 (defn create-repo
-  "Create a repository. You need to supply at least :name, but you can supply as many of
+  "Create a repository. You need to supply at least name, but you can supply as many of
   :description, :homepage, :public, as you want."
-  [& {:keys [name public homepage description]}]
+  [name & {:keys [public homepage description]}]
   {:pre [(not (nil? name))]}
   (make-request "repos/create"
                 :type "POST"            ; obviously.

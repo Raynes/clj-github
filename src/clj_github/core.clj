@@ -25,7 +25,7 @@
 (defn t-to-n
   "Returns 1 for true and 0 for false"
   [n]
-  (if n 1 0))
+  (if (or n (nil? n)) 1 0))
 
 (defn handle
   "Checks for an error, and if one has happened, returns the message.
