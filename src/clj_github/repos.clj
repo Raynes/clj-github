@@ -19,7 +19,7 @@
   has_downloads, and has_issues."
   [user repo key value]
   (make-request ["repos/show" user repo]
-                :type "POST"
+                :type :post
                 :data {(str "values[" key "]") value}
                 :sift :repository))
 
@@ -49,7 +49,7 @@
   [name & {:keys [public homepage description]}]
   {:pre [(not (nil? name))]}
   (make-request "repos/create"
-                :type "POST"            ; obviously.
+                :type :post            ; obviously.
                 :data {"name" name
                        "public" (t-to-n public)
                        "homepage" homepage
@@ -60,10 +60,10 @@
   "Delete a repo. Cannot be undone."
   [repo]
   (let [delete-token (make-request ["repos/delete" repo]
-                                   :type "POST")]
+                                   :type :post)]
     (if (map? delete-token)
       (make-request ["repos/delete" repo]
-                    :type "POST"
+                    :type :post
                     :data {"delete_token" (:delete_token delete-token)}
                     :sift :status)
       delete-token)))
@@ -71,7 +71,7 @@
 (defn set-repo-visibility
   "Set a repositories visibility. Either public or private."
   [repo visibility]
-  (make-request ["repos/set" visibility repo] :type "POST" :sift :repository))
+  (make-request ["repos/set" visibility repo] :type :post :sift :repository))
 
 
 (defn show-deploy-keys
@@ -82,12 +82,12 @@
 (defn add-deploy-key
   "Add a deploy key to a repo."
   [repo title key]
-  (make-request ["repos/key" repo "add"] :data {"title" title "key" key} :type "POST" :sift :public_keys))
+  (make-request ["repos/key" repo "add"] :data {"title" title "key" key} :type :post :sift :public_keys))
 
 (defn remove-deploy-key
   "Remove a deploy key from a repo."
   [repo id]
-  (make-request ["repos/key" repo "remove"] :type "POST" :data {"id" id} :sift :public_keys))
+  (make-request ["repos/key" repo "remove"] :type :post :data {"id" id} :sift :public_keys))
 
 (defn show-collaborators
   "Get a list of collaborators on a repo."
@@ -97,12 +97,12 @@
 (defn add-collaborator
   "Add a collaborator to a project."
   [user repo]
-  (make-request ["repos/collaborators" repo "add" user] :type "POST" :sift :collaborators))
+  (make-request ["repos/collaborators" repo "add" user] :type :post :sift :collaborators))
 
 (defn remove-collaborator
   "Remove a collaborator from a project."
   [user repo]
-  (make-request ["repos/collaborators" repo "remove" user] :type "POST" :sift :collaborators))
+  (make-request ["repos/collaborators" repo "remove" user] :type :post :sift :collaborators))
 
 (defn show-pushable
   "List of repos that are not your own that you can push to. Must be authenticated for this

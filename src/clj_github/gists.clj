@@ -27,7 +27,7 @@
   Syntax highlighting is determined by extension."
   [& files]
   (first (make-gist-request "new"
-                            :type "POST"
+                            :type :post
                             :data (into {}
                                         (for [[k v] (partition 2 files)]
                                           [(str "files[" k "]") v]))

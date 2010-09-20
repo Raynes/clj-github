@@ -32,12 +32,12 @@
 (defn follow
   "Follow a user."
   [user]
-  (make-request ["user/follow" user] :type "POST" :sift :users))
+  (make-request ["user/follow" user] :type :post :sift :users))
 
 (defn unfollow
   "Unfollow a user."
   [user]
-  (make-request ["user/unfollow" user] :type "POST" :sift :users))
+  (make-request ["user/unfollow" user] :type :post :sift :users))
 
 (defn show-watching
   "Get a list of repos that user is watching."

@@ -1,18 +1,17 @@
 (ns #^{:doc "Core of clj-github. This namespace is used by the API files. Only thing useful
             it provides to users is the with-auth convenience function."}
   clj-github.core
-  (:use [clojure.contrib [string :only [join]] [base64 :only [encode-str]]]
-	[clojure-http.client :only [request add-query-params]]
-	[org.danlarkin.json :only [decode-from-str]])
+  (:use [clojure.contrib [string :only [join]]]
+	[clj-http.client :only [request]]
+        [clojure.contrib.json :only [read-json]])
   (:import java.net.URI))
 
-(defn create-url [rest auth gist? & {special :special}]
-  (let [base-dom (if gist? "gist.github.com" "github.com")
-        v (if gist? "v1" "v2")
-        base-route (if special (str special rest) (str "/api/" v "/json/" rest))]
-    (str (if (seq auth)
-           (URI. "http" (str (:user auth) ":" (:pass auth)) base-dom 80 base-route nil nil)
-           (URI. "http" base-dom base-route nil)))))
+(defn create-url [rest gist? & {special :special}]
+  (URI. "http" (if gist? "gist.github.com" "github.com")
+        (if special
+          (str special rest)
+          (str "/api/" (if gist? "v1" "v2") "/json/" rest))
+        nil))
 
 (def #^{:doc "This var will be rebound to hold authentication information."}
      *authentication* {})
@@ -37,15 +36,19 @@
   "Constructs a basic authentication request. Path is either aseq of URL segments that will
   be joined together with slashes, or a full string depicting a path that will be used directly.
   The path should never start with a forward slash. It's added automatically."
-  [path & {:keys [type data sift raw? gist? special] :or {type "GET" data {} raw? false gist? false}}]
-  (let [req (request (add-query-params
-                      (create-url (if (string? path) path (apply slash-join (filter identity path)))
-                                  *authentication* gist? :special special)
-                      data)
-                     type)]
+  [path & {:keys [type data sift raw? gist? special] :or {type :get data {} raw? false gist? false}}]
+  (let [req (request
+             {:method type
+              :url (str (create-url (if (string? path) path (apply slash-join (filter identity path)))
+                                    gist? :special special))
+              :query-params data
+              :basic-auth [(if (:token *authentication*)
+                             (str (:user *authentication*) "/token")
+                             (:user *authentication*))
+                           (or (:token *authentication*) (:password *authentication*))]})]
     (if raw?
-      (->> req :body-seq (interpose "\n") (apply str))
-      (try (-> req :body-seq first decode-from-str (handle sift))
+      (->> req :body (interpose "\n") (apply str))
+      (try (-> req :body read-json (handle sift))
            (catch Exception e
              (if (.startsWith "java.lang.Exception: EOF while reading" (.getMessage e))
                (str "If you're seeing this message, it means that Github threw down a "
