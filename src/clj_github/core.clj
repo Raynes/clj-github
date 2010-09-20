@@ -43,7 +43,7 @@
                                     gist? :special special))
               :query-params data
               :basic-auth [(if (:token *authentication*)
-                             (str (:user *authentication*) "/token")
+                             (str (:username *authentication*) "/token")
                              (:user *authentication*))
                            (or (:token *authentication*) (:password *authentication*))]})]
     (if raw?
