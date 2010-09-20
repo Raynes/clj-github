@@ -34,20 +34,21 @@
   be joined together with slashes, or a full string depicting a path that will be used directly.
   The path should never start with a forward slash. It's added automatically."
   [auth path & {:keys [type data sift raw? gist? special] :or {type :get data {} raw? false gist? false}}]
-  (let [req (request
-             {:method type
-              :url (str (create-url (if (string? path) path (apply slash-join (filter identity path)))
-                                    gist? :special special))
-              :query-params data
-              :basic-auth [(if (:token auth)
-                             (str (:username auth) "/token")
-                             (:user auth))
-                           (or (:token auth) (:password auth))]})]
+  (let [req (delay
+             (request
+              {:method type
+               :url (str (create-url (if (string? path) path (apply slash-join (filter identity path)))
+                                     gist? :special special))
+               :query-params data
+               :basic-auth [(if (:token auth)
+                              (str (:username auth) "/token")
+                              (:user auth))
+                            (or (:token auth) (:password auth))]}))]
     (if raw?
-      (->> req :body (interpose "\n") (apply str))
-      (try (-> req :body read-json (handle sift))
+      (->> req force :body (interpose "\n") (apply str))
+      (try (-> req force :body read-json (handle sift))
            (catch Exception e
-             (if (.startsWith "java.lang.Exception: EOF while reading" (.getMessage e))
+             (if (= "404" (.getMessage e))
                (str "If you're seeing this message, it means that Github threw down a "
                     "Page Not Found page that could not be parsed as JSON. This is usually "
                     "caused by giving invalid information that caused the URL to route to an "
