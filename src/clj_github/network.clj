@@ -4,12 +4,12 @@
 
 (defn show-network-meta
   "Show network metadata for a repo."
-  [user repo]
-  (make-request [user repo "network_meta"] :special "/"))
+  [auth user repo]
+  (make-request auth [user repo "network_meta"] :special "/"))
 
 (defn show-network-data
   "Show network data for a repo. You'll need a nethash from a show-network-meta call."
-  [user repo nethash]
-  (make-request [user repo "network_data_chunk"]
+  [auth user repo nethash]
+  (make-request auth [user repo "network_data_chunk"]
                 :special "/"
                 :data {"nethash" nethash}))

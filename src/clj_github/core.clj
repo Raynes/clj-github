@@ -13,9 +13,6 @@
           (str "/api/" (if gist? "v1" "v2") "/json/" rest))
         nil))
 
-(def #^{:doc "This var will be rebound to hold authentication information."}
-     *authentication* {})
-
 (defn slash-join
   "Returns a string of it's arguments separated by forward slashes."
   [& args]
@@ -36,16 +33,16 @@
   "Constructs a basic authentication request. Path is either aseq of URL segments that will
   be joined together with slashes, or a full string depicting a path that will be used directly.
   The path should never start with a forward slash. It's added automatically."
-  [path & {:keys [type data sift raw? gist? special] :or {type :get data {} raw? false gist? false}}]
+  [auth path & {:keys [type data sift raw? gist? special] :or {type :get data {} raw? false gist? false}}]
   (let [req (request
              {:method type
               :url (str (create-url (if (string? path) path (apply slash-join (filter identity path)))
                                     gist? :special special))
               :query-params data
-              :basic-auth [(if (:token *authentication*)
-                             (str (:username *authentication*) "/token")
-                             (:user *authentication*))
-                           (or (:token *authentication*) (:password *authentication*))]})]
+              :basic-auth [(if (:token auth)
+                             (str (:username auth) "/token")
+                             (:user auth))
+                           (or (:token auth) (:password auth))]})]
     (if raw?
       (->> req :body (interpose "\n") (apply str))
       (try (-> req :body read-json (handle sift))
@@ -56,6 +53,3 @@
                     "caused by giving invalid information that caused the URL to route to an "
                     "unknown page.")
                (throw e)))))))
-
-(defmacro with-auth [auth body]
-  `(binding [*authentication* ~auth] ~body))
