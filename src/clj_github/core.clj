@@ -39,10 +39,10 @@
               {:method type
                :url (str (create-url (if (string? path) path (apply slash-join (filter identity path)))
                                      gist? :special special))
-               :query-params data
+               :query-params (into {} (filter #(val %) data))
                :basic-auth [(if (:token auth)
                               (str (:username auth) "/token")
-                              (:user auth))
+                              (:username auth))
                             (or (:token auth) (:password auth))]}))]
     (if raw?
       (->> req force :body (interpose "\n") (apply str))

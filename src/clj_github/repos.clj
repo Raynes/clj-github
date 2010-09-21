@@ -46,7 +46,7 @@
 (defn create-repo
   "Create a repository. You need to supply at least name, but you can supply as many of
   :description, :homepage, :public, as you want."
-  [auth name & {:keys [public homepage description]}]
+  [auth name & {:keys [public homepage description] :or {public true}}]
   {:pre [(not (nil? name))]}
   (make-request auth "repos/create"
                 :type :post            ; obviously.

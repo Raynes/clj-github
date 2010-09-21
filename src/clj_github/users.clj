@@ -17,7 +17,7 @@
   name, email, blog, company, and location."
   [auth user target value]
   {:pre [(#{"name" "email" "blog" "company" "location"} target)]}
-  (make-request auth ["user/show" user] :type "POST" :data {(str "values[" target "]") value} :sift :user))
+  (make-request auth ["user/show" user] :type :post :data {(str "values[" target "]") value} :sift :user))
 
 (defn show-following
   "Get a list of the users that a user is following."
