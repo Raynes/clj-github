@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>clj-github.issues API reference (clj-github)</title>
+    <title>clj-github.issues - clj-github nil API documentation</title>
     <link href="static/favicon.png" rel="icon" />
     <link href="static/favicon.png" rel="shortcut icon" />
     <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
@@ -30,12 +30,17 @@ namespace.
       <div id="leftcolumn"><div style="text-align: center;"></div>
 <div class="menu">
   <div class="WikiCustomNav WikiElement wiki">
-    <a class="wiki_link" href="index.html">Overview</a><br />
-    <a class="wiki_link" href="api-index.html">API Index</a><br />
-    <a class="wiki_link" href="#">Namespaces:</a>
+    <span class="toc-header"><span id="project-name">clj-github</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <span class="toc-header">Namespaces</span>
     <ul id="left-sidebar-list">
       <li><a href="clj-github.commits-api.html" class="wiki_link">clj-github.commits</a></li><li><a href="clj-github.core-api.html" class="wiki_link">clj-github.core</a></li><li><a href="clj-github.gists-api.html" class="wiki_link">clj-github.gists</a></li><li><a href="clj-github.issues-api.html" class="wiki_link">clj-github.issues</a></li><li><a href="clj-github.network-api.html" class="wiki_link">clj-github.network</a></li><li><a href="clj-github.objects-api.html" class="wiki_link">clj-github.objects</a></li><li><a href="clj-github.repos-api.html" class="wiki_link">clj-github.repos</a></li><li><a href="clj-github.users-api.html" class="wiki_link">clj-github.users</a></li>
     </ul>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
   </div>
 </div>
 </div>
@@ -76,16 +81,20 @@ namespace.
   </div>
 </div>
 </div>
-                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.issues</span></h1>
-by <span id="author">Unknown</span><br />
+                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.issues</span>
+  - <span id="header-project">clj-github</span> <span id="header-version"></span> (<span id="header-status"></span>)
+  </h1>
+
 <br />Usage:
 <pre>
 (ns your-namespace
   (:require <span id="long-name">clj-github.issues</span>))
 </pre><pre>
 </pre><h2>Overview</h2>
-<pre id="namespace-docstr">Implements the API functions described here: http://develop.github.com/p/issues.html
+<pre id="namespace-docstr">Implements the API functions described here: <a href="http://develop.github.com/p/issues.html">http://develop.github.com/p/issues.html</a>
 In any function that takes a 'state' argument, state is either "open" or "closed"</pre>
+
+
 <br />
 <h2>Public Variables and Functions</h2>
 <div id="var-entry">
@@ -93,110 +102,134 @@ In any function that takes a 'state' argument, state is either "open" or "closed
   <hr />
   <h2 id="clj-github.issues/add-label">add-label</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (add-label user repo label &amp; [number])
+  <pre id="var-usage">Usage: (add-label auth user repo label &amp; [number])
 </pre>
   <pre id="var-docstr">Add a label. If you supply an issue number, the label will be added to that issue.
 Otherwise, the label will be added to the system, but not attached to an issue.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/close-issue">close-issue</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (close-issue user repo number)
+  <pre id="var-usage">Usage: (close-issue auth user repo number)
 </pre>
   <pre id="var-docstr">Closes an issue.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/comment-issue">comment-issue</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (comment-issue user repo number comment)
+  <pre id="var-usage">Usage: (comment-issue auth user repo number comment)
 </pre>
   <pre id="var-docstr">Comment on an issue.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/edit-issue">edit-issue</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (edit-issue user repo number &amp; {:keys [title body]})
+  <pre id="var-usage">Usage: (edit-issue auth user repo number &amp; {:keys [title body]})
 </pre>
   <pre id="var-docstr">Edit an issue.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/issue-comments">issue-comments</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (issue-comments user repo number)
+  <pre id="var-usage">Usage: (issue-comments auth user repo number)
 </pre>
   <pre id="var-docstr">List of comments on an issue/</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/open-issue">open-issue</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (open-issue user repo title body)
+  <pre id="var-usage">Usage: (open-issue auth user repo title body)
 </pre>
   <pre id="var-docstr">Open an issue.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/remove-label">remove-label</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (remove-label user repo label &amp; number)
+  <pre id="var-usage">Usage: (remove-label auth user repo label &amp; number)
 </pre>
   <pre id="var-docstr">Remove a label. If you supply an issue number, the label will be removed from that issue
 alone. Otherwise, the label will be removed from all issues.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/reopen-issue">reopen-issue</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (reopen-issue user repo number)
+  <pre id="var-usage">Usage: (reopen-issue auth user repo number)
 </pre>
   <pre id="var-docstr">Reopens a previously closed issue.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/search-issues">search-issues</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (search-issues user repo state term)
+  <pre id="var-usage">Usage: (search-issues auth user repo state term)
 </pre>
   <pre id="var-docstr">Search through a project's issues.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/show-issue">show-issue</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-issue user repo number)
+  <pre id="var-usage">Usage: (show-issue auth user repo number)
 </pre>
   <pre id="var-docstr">Shows the data on an individual issue.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/show-issues">show-issues</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-issues user repo state)
+  <pre id="var-usage">Usage: (show-issues auth user repo state)
 </pre>
   <pre id="var-docstr">List of issues a project has.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.issues/show-labels">show-labels</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-labels user repo)
+  <pre id="var-usage">Usage: (show-labels auth user repo)
 </pre>
   <pre id="var-docstr">Lists a project's issue labels.</pre>
+  
+  
   
 </div>
 

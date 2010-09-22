@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>clj-github.network API reference (clj-github)</title>
+    <title>clj-github.network - clj-github nil API documentation</title>
     <link href="static/favicon.png" rel="icon" />
     <link href="static/favicon.png" rel="shortcut icon" />
     <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
@@ -30,12 +30,17 @@ namespace.
       <div id="leftcolumn"><div style="text-align: center;"></div>
 <div class="menu">
   <div class="WikiCustomNav WikiElement wiki">
-    <a class="wiki_link" href="index.html">Overview</a><br />
-    <a class="wiki_link" href="api-index.html">API Index</a><br />
-    <a class="wiki_link" href="#">Namespaces:</a>
+    <span class="toc-header"><span id="project-name">clj-github</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <span class="toc-header">Namespaces</span>
     <ul id="left-sidebar-list">
       <li><a href="clj-github.commits-api.html" class="wiki_link">clj-github.commits</a></li><li><a href="clj-github.core-api.html" class="wiki_link">clj-github.core</a></li><li><a href="clj-github.gists-api.html" class="wiki_link">clj-github.gists</a></li><li><a href="clj-github.issues-api.html" class="wiki_link">clj-github.issues</a></li><li><a href="clj-github.network-api.html" class="wiki_link">clj-github.network</a></li><li><a href="clj-github.objects-api.html" class="wiki_link">clj-github.objects</a></li><li><a href="clj-github.repos-api.html" class="wiki_link">clj-github.repos</a></li><li><a href="clj-github.users-api.html" class="wiki_link">clj-github.users</a></li>
     </ul>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
   </div>
 </div>
 </div>
@@ -56,8 +61,10 @@ namespace.
   </div>
 </div>
 </div>
-                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.network</span></h1>
-by <span id="author">Unknown</span><br />
+                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.network</span>
+  - <span id="header-project">clj-github</span> <span id="header-version"></span> (<span id="header-status"></span>)
+  </h1>
+
 <br />Usage:
 <pre>
 (ns your-namespace
@@ -65,6 +72,8 @@ by <span id="author">Unknown</span><br />
 </pre><pre>
 </pre><h2>Overview</h2>
 <pre id="namespace-docstr">Implements the API functions described here: <a href="http://develop.github.com/p/network.html">http://develop.github.com/p/network.html</a></pre>
+
+
 <br />
 <h2>Public Variables and Functions</h2>
 <div id="var-entry">
@@ -72,18 +81,22 @@ by <span id="author">Unknown</span><br />
   <hr />
   <h2 id="clj-github.network/show-network-data">show-network-data</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-network-data user repo nethash)
+  <pre id="var-usage">Usage: (show-network-data auth user repo nethash)
 </pre>
   <pre id="var-docstr">Show network data for a repo. You'll need a nethash from a show-network-meta call.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.network/show-network-meta">show-network-meta</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-network-meta user repo)
+  <pre id="var-usage">Usage: (show-network-meta auth user repo)
 </pre>
   <pre id="var-docstr">Show network metadata for a repo.</pre>
+  
+  
   
 </div>
 

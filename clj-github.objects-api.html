@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>clj-github.objects API reference (clj-github)</title>
+    <title>clj-github.objects - clj-github nil API documentation</title>
     <link href="static/favicon.png" rel="icon" />
     <link href="static/favicon.png" rel="shortcut icon" />
     <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
@@ -30,12 +30,17 @@ namespace.
       <div id="leftcolumn"><div style="text-align: center;"></div>
 <div class="menu">
   <div class="WikiCustomNav WikiElement wiki">
-    <a class="wiki_link" href="index.html">Overview</a><br />
-    <a class="wiki_link" href="api-index.html">API Index</a><br />
-    <a class="wiki_link" href="#">Namespaces:</a>
+    <span class="toc-header"><span id="project-name">clj-github</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <span class="toc-header">Namespaces</span>
     <ul id="left-sidebar-list">
       <li><a href="clj-github.commits-api.html" class="wiki_link">clj-github.commits</a></li><li><a href="clj-github.core-api.html" class="wiki_link">clj-github.core</a></li><li><a href="clj-github.gists-api.html" class="wiki_link">clj-github.gists</a></li><li><a href="clj-github.issues-api.html" class="wiki_link">clj-github.issues</a></li><li><a href="clj-github.network-api.html" class="wiki_link">clj-github.network</a></li><li><a href="clj-github.objects-api.html" class="wiki_link">clj-github.objects</a></li><li><a href="clj-github.repos-api.html" class="wiki_link">clj-github.repos</a></li><li><a href="clj-github.users-api.html" class="wiki_link">clj-github.users</a></li>
     </ul>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
   </div>
 </div>
 </div>
@@ -64,8 +69,10 @@ namespace.
   </div>
 </div>
 </div>
-                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.objects</span></h1>
-by <span id="author">Unknown</span><br />
+                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.objects</span>
+  - <span id="header-project">clj-github</span> <span id="header-version"></span> (<span id="header-status"></span>)
+  </h1>
+
 <br />Usage:
 <pre>
 (ns your-namespace
@@ -73,6 +80,8 @@ by <span id="author">Unknown</span><br />
 </pre><pre>
 </pre><h2>Overview</h2>
 <pre id="namespace-docstr">Implements the API functions described here: <a href="http://develop.github.com/p/object.html">http://develop.github.com/p/object.html</a></pre>
+
+
 <br />
 <h2>Public Variables and Functions</h2>
 <div id="var-entry">
@@ -80,54 +89,66 @@ by <span id="author">Unknown</span><br />
   <hr />
   <h2 id="clj-github.objects/show-all-blobs">show-all-blobs</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-all-blobs user repo sha)
+  <pre id="var-usage">Usage: (show-all-blobs user auth repo sha)
 </pre>
   <pre id="var-docstr">Get a list of all blobs for a specific sha.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.objects/show-blob">show-blob</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-blob user repo sha path &amp; {meta? :meta?})
+  <pre id="var-usage">Usage: (show-blob user auth repo sha path &amp; {meta? :meta?})
 </pre>
   <pre id="var-docstr">Get data about a blob by tree sha and path. If you want meta, add :meta? true to the parameters.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.objects/show-blob-meta">show-blob-meta</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-blob-meta user repo sha)
+  <pre id="var-usage">Usage: (show-blob-meta user auth repo sha)
 </pre>
   <pre id="var-docstr">Get metadata of blobs.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.objects/show-raw-blob">show-raw-blob</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-raw-blob user repo sha)
+  <pre id="var-usage">Usage: (show-raw-blob user auth repo sha)
 </pre>
   <pre id="var-docstr">Returns raw blob data.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.objects/show-tree">show-tree</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-tree user repo sha)
+  <pre id="var-usage">Usage: (show-tree user auth repo sha)
 </pre>
   <pre id="var-docstr">Get the contents of a tree by tree sha.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.objects/show-tree-meta">show-tree-meta</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-tree-meta user repo sha)
+  <pre id="var-usage">Usage: (show-tree-meta user auth repo sha)
 </pre>
   <pre id="var-docstr">Get metadata of trees.</pre>
+  
+  
   
 </div>
 

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>clj-github.core API reference (clj-github)</title>
+    <title>clj-github.core - clj-github nil API documentation</title>
     <link href="static/favicon.png" rel="icon" />
     <link href="static/favicon.png" rel="shortcut icon" />
     <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
@@ -30,12 +30,17 @@ namespace.
       <div id="leftcolumn"><div style="text-align: center;"></div>
 <div class="menu">
   <div class="WikiCustomNav WikiElement wiki">
-    <a class="wiki_link" href="index.html">Overview</a><br />
-    <a class="wiki_link" href="api-index.html">API Index</a><br />
-    <a class="wiki_link" href="#">Namespaces:</a>
+    <span class="toc-header"><span id="project-name">clj-github</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <span class="toc-header">Namespaces</span>
     <ul id="left-sidebar-list">
       <li><a href="clj-github.commits-api.html" class="wiki_link">clj-github.commits</a></li><li><a href="clj-github.core-api.html" class="wiki_link">clj-github.core</a></li><li><a href="clj-github.gists-api.html" class="wiki_link">clj-github.gists</a></li><li><a href="clj-github.issues-api.html" class="wiki_link">clj-github.issues</a></li><li><a href="clj-github.network-api.html" class="wiki_link">clj-github.network</a></li><li><a href="clj-github.objects-api.html" class="wiki_link">clj-github.objects</a></li><li><a href="clj-github.repos-api.html" class="wiki_link">clj-github.repos</a></li><li><a href="clj-github.users-api.html" class="wiki_link">clj-github.users</a></li>
     </ul>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
   </div>
 </div>
 </div>
@@ -48,8 +53,6 @@ namespace.
   <div style="margin-left: 1em;" class="toc-section">
     <a href="#toc0">Overview</a>
     <div style="margin-left: 1em;" class="toc-entry">
-      <a href="#clj-github.core/*authentication*">*authentication*</a>
-    </div><div style="margin-left: 1em;" class="toc-entry">
       <a href="#clj-github.core/handle">handle</a>
     </div><div style="margin-left: 1em;" class="toc-entry">
       <a href="#clj-github.core/make-request">make-request</a>
@@ -62,8 +65,10 @@ namespace.
   </div>
 </div>
 </div>
-                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.core</span></h1>
-by <span id="author">Unknown</span><br />
+                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.core</span>
+  - <span id="header-project">clj-github</span> <span id="header-version"></span> (<span id="header-status"></span>)
+  </h1>
+
 <br />Usage:
 <pre>
 (ns your-namespace
@@ -72,17 +77,11 @@ by <span id="author">Unknown</span><br />
 </pre><h2>Overview</h2>
 <pre id="namespace-docstr">Core of clj-github. This namespace is used by the API files. Only thing useful
 it provides to users is the with-auth convenience function.</pre>
+
+
 <br />
 <h2>Public Variables and Functions</h2>
 <div id="var-entry">
-  <br />
-  <hr />
-  <h2 id="clj-github.core/*authentication*">*authentication*</h2>
-  <span id="var-type">var</span><br />
-  <pre id="var-usage"></pre>
-  <pre id="var-docstr">This var will be rebound to hold authentication information.</pre>
-  
-</div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.core/handle">handle</h2>
@@ -93,16 +92,20 @@ it provides to users is the with-auth convenience function.</pre>
   <pre id="var-docstr">Checks for an error, and if one has happened, returns the message.
 Otherwise, spits out results.</pre>
   
+  
+  
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.core/make-request">make-request</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (make-request path &amp; {:keys [type data sift raw? gist? special], :or {type GET, data {}, raw? false, gist? false}})
+  <pre id="var-usage">Usage: (make-request auth path &amp; {:keys [type data sift raw? gist? special], :or {type :get, data {}, raw? false, gist? false}})
 </pre>
   <pre id="var-docstr">Constructs a basic authentication request. Path is either aseq of URL segments that will
 be joined together with slashes, or a full string depicting a path that will be used directly.
 The path should never start with a forward slash. It's added automatically.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
@@ -113,6 +116,8 @@ The path should never start with a forward slash. It's added automatically.</pre
 </pre>
   <pre id="var-docstr">Returns a string of it's arguments separated by forward slashes.</pre>
   
+  
+  
 </div><div id="var-entry">
   <br />
   <hr />
@@ -121,6 +126,8 @@ The path should never start with a forward slash. It's added automatically.</pre
   <pre id="var-usage">Usage: (t-to-n n)
 </pre>
   <pre id="var-docstr">Returns 1 for true and 0 for false</pre>
+  
+  
   
 </div>
 

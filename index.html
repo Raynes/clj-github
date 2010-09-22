@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>clj-github - Overview</title>
+    <title>Overview - clj-github nil API documentation</title>
     <link href="static/favicon.png" rel="icon" />
     <link href="static/favicon.png" rel="shortcut icon" />
     <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
@@ -30,12 +30,17 @@ namespace.
       <div id="leftcolumn"><div style="text-align: center;"></div>
 <div class="menu">
   <div class="WikiCustomNav WikiElement wiki">
-    <a class="wiki_link" href="index.html">Overview</a><br />
-    <a class="wiki_link" href="api-index.html">API Index</a><br />
-    <a class="wiki_link" href="#">Namespaces:</a>
+    <span class="toc-header"><span id="project-name">clj-github</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <span class="toc-header">Namespaces</span>
     <ul id="left-sidebar-list">
       <li><a href="clj-github.commits-api.html" class="wiki_link">clj-github.commits</a></li><li><a href="clj-github.core-api.html" class="wiki_link">clj-github.core</a></li><li><a href="clj-github.gists-api.html" class="wiki_link">clj-github.gists</a></li><li><a href="clj-github.issues-api.html" class="wiki_link">clj-github.issues</a></li><li><a href="clj-github.network-api.html" class="wiki_link">clj-github.network</a></li><li><a href="clj-github.objects-api.html" class="wiki_link">clj-github.objects</a></li><li><a href="clj-github.repos-api.html" class="wiki_link">clj-github.repos</a></li><li><a href="clj-github.users-api.html" class="wiki_link">clj-github.users</a></li>
     </ul>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
   </div>
 </div>
 </div>
@@ -80,7 +85,7 @@ namespace.
   </div>
 </div>
 </div>
-                <div id="content-tag"><h1 id="toc0">An Overview of the <span id="header-project">clj-github</span> API</h1>
+                <div id="content-tag"><h1 id="toc0">API Overview - <span id="header-project">clj-github</span> <span id="header-version"></span> (<span id="header-status"></span>)</h1>
 <br />
 <div id="project-description">Bindings to the Github and Gist API.</div>
 <br />
@@ -88,9 +93,11 @@ namespace.
   <br />
   <hr />
   <h2 id="clj-github.commits">clj-github.commits</h2>
-  by <span id="author">unknown author</span><br />
+  
   <a href="clj-github.commits-api.html" id="api-link">Detailed API documentation</a><br />
   <pre id="namespace-docstr">Implements the API functions described here: <a href="http://develop.github.com/p/commits.html">http://develop.github.com/p/commits.html</a></pre>
+  
+  
   
   Public variables and functions:
   <span id="var-link"><a href="clj-github.commits-api.html#clj-github.commits/list-commits" id="var-tag">list-commits</a> </span><span id="var-link"><a href="clj-github.commits-api.html#clj-github.commits/show-commit" id="var-tag">show-commit</a> </span><br />
@@ -99,21 +106,25 @@ namespace.
   <br />
   <hr />
   <h2 id="clj-github.core">clj-github.core</h2>
-  by <span id="author">unknown author</span><br />
+  
   <a href="clj-github.core-api.html" id="api-link">Detailed API documentation</a><br />
   <pre id="namespace-docstr">Core of clj-github. This namespace is used by the API files. Only thing useful
 it provides to users is the with-auth convenience function.</pre>
   
+  
+  
   Public variables and functions:
-  <span id="var-link"><a href="clj-github.core-api.html#clj-github.core/*authentication*" id="var-tag">*authentication*</a> </span><span id="var-link"><a href="clj-github.core-api.html#clj-github.core/handle" id="var-tag">handle</a> </span><span id="var-link"><a href="clj-github.core-api.html#clj-github.core/make-request" id="var-tag">make-request</a> </span><span id="var-link"><a href="clj-github.core-api.html#clj-github.core/slash-join" id="var-tag">slash-join</a> </span><span id="var-link"><a href="clj-github.core-api.html#clj-github.core/t-to-n" id="var-tag">t-to-n</a> </span><br />
+  <span id="var-link"><a href="clj-github.core-api.html#clj-github.core/handle" id="var-tag">handle</a> </span><span id="var-link"><a href="clj-github.core-api.html#clj-github.core/make-request" id="var-tag">make-request</a> </span><span id="var-link"><a href="clj-github.core-api.html#clj-github.core/slash-join" id="var-tag">slash-join</a> </span><span id="var-link"><a href="clj-github.core-api.html#clj-github.core/t-to-n" id="var-tag">t-to-n</a> </span><br />
   
 </div><div id="namespace-entry">
   <br />
   <hr />
   <h2 id="clj-github.gists">clj-github.gists</h2>
-  by <span id="author">unknown author</span><br />
+  
   <a href="clj-github.gists-api.html" id="api-link">Detailed API documentation</a><br />
   <pre id="namespace-docstr">Implements the API functions described here: <a href="http://develop.github.com/p/gist.html">http://develop.github.com/p/gist.html</a></pre>
+  
+  
   
   Public variables and functions:
   <span id="var-link"><a href="clj-github.gists-api.html#clj-github.gists/new-gist" id="var-tag">new-gist</a> </span><span id="var-link"><a href="clj-github.gists-api.html#clj-github.gists/show-gist" id="var-tag">show-gist</a> </span><span id="var-link"><a href="clj-github.gists-api.html#clj-github.gists/show-gist-meta" id="var-tag">show-gist-meta</a> </span><span id="var-link"><a href="clj-github.gists-api.html#clj-github.gists/show-users-gists" id="var-tag">show-users-gists</a> </span><br />
@@ -122,10 +133,12 @@ it provides to users is the with-auth convenience function.</pre>
   <br />
   <hr />
   <h2 id="clj-github.issues">clj-github.issues</h2>
-  by <span id="author">unknown author</span><br />
+  
   <a href="clj-github.issues-api.html" id="api-link">Detailed API documentation</a><br />
-  <pre id="namespace-docstr">Implements the API functions described here: http://develop.github.com/p/issues.html
+  <pre id="namespace-docstr">Implements the API functions described here: <a href="http://develop.github.com/p/issues.html">http://develop.github.com/p/issues.html</a>
 In any function that takes a 'state' argument, state is either "open" or "closed"</pre>
+  
+  
   
   Public variables and functions:
   <span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/add-label" id="var-tag">add-label</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/close-issue" id="var-tag">close-issue</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/comment-issue" id="var-tag">comment-issue</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/edit-issue" id="var-tag">edit-issue</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/issue-comments" id="var-tag">issue-comments</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/open-issue" id="var-tag">open-issue</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/remove-label" id="var-tag">remove-label</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/reopen-issue" id="var-tag">reopen-issue</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/search-issues" id="var-tag">search-issues</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/show-issue" id="var-tag">show-issue</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/show-issues" id="var-tag">show-issues</a> </span><span id="var-link"><a href="clj-github.issues-api.html#clj-github.issues/show-labels" id="var-tag">show-labels</a> </span><br />
@@ -134,9 +147,11 @@ In any function that takes a 'state' argument, state is either "open" or "closed
   <br />
   <hr />
   <h2 id="clj-github.network">clj-github.network</h2>
-  by <span id="author">unknown author</span><br />
+  
   <a href="clj-github.network-api.html" id="api-link">Detailed API documentation</a><br />
   <pre id="namespace-docstr">Implements the API functions described here: <a href="http://develop.github.com/p/network.html">http://develop.github.com/p/network.html</a></pre>
+  
+  
   
   Public variables and functions:
   <span id="var-link"><a href="clj-github.network-api.html#clj-github.network/show-network-data" id="var-tag">show-network-data</a> </span><span id="var-link"><a href="clj-github.network-api.html#clj-github.network/show-network-meta" id="var-tag">show-network-meta</a> </span><br />
@@ -145,9 +160,11 @@ In any function that takes a 'state' argument, state is either "open" or "closed
   <br />
   <hr />
   <h2 id="clj-github.objects">clj-github.objects</h2>
-  by <span id="author">unknown author</span><br />
+  
   <a href="clj-github.objects-api.html" id="api-link">Detailed API documentation</a><br />
   <pre id="namespace-docstr">Implements the API functions described here: <a href="http://develop.github.com/p/object.html">http://develop.github.com/p/object.html</a></pre>
+  
+  
   
   Public variables and functions:
   <span id="var-link"><a href="clj-github.objects-api.html#clj-github.objects/show-all-blobs" id="var-tag">show-all-blobs</a> </span><span id="var-link"><a href="clj-github.objects-api.html#clj-github.objects/show-blob" id="var-tag">show-blob</a> </span><span id="var-link"><a href="clj-github.objects-api.html#clj-github.objects/show-blob-meta" id="var-tag">show-blob-meta</a> </span><span id="var-link"><a href="clj-github.objects-api.html#clj-github.objects/show-raw-blob" id="var-tag">show-raw-blob</a> </span><span id="var-link"><a href="clj-github.objects-api.html#clj-github.objects/show-tree" id="var-tag">show-tree</a> </span><span id="var-link"><a href="clj-github.objects-api.html#clj-github.objects/show-tree-meta" id="var-tag">show-tree-meta</a> </span><br />
@@ -156,9 +173,11 @@ In any function that takes a 'state' argument, state is either "open" or "closed
   <br />
   <hr />
   <h2 id="clj-github.repos">clj-github.repos</h2>
-  by <span id="author">unknown author</span><br />
+  
   <a href="clj-github.repos-api.html" id="api-link">Detailed API documentation</a><br />
   <pre id="namespace-docstr">Impelements the API functions described here: <a href="http://develop.github.com/p/repo.html">http://develop.github.com/p/repo.html</a></pre>
+  
+  
   
   Public variables and functions:
   <span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/add-collaborator" id="var-tag">add-collaborator</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/add-deploy-key" id="var-tag">add-deploy-key</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/create-repo" id="var-tag">create-repo</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/delete-repo" id="var-tag">delete-repo</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/fork-repo" id="var-tag">fork-repo</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/remove-collaborator" id="var-tag">remove-collaborator</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/remove-deploy-key" id="var-tag">remove-deploy-key</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/search-repos" id="var-tag">search-repos</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/set-repo-info" id="var-tag">set-repo-info</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/set-repo-visibility" id="var-tag">set-repo-visibility</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/show-collaborators" id="var-tag">show-collaborators</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/show-contributors" id="var-tag">show-contributors</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/show-deploy-keys" id="var-tag">show-deploy-keys</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/show-languages" id="var-tag">show-languages</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/show-network" id="var-tag">show-network</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/show-pushable" id="var-tag">show-pushable</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/show-repo-info" id="var-tag">show-repo-info</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/show-repos" id="var-tag">show-repos</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/show-tags" id="var-tag">show-tags</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/unwatch-repo" id="var-tag">unwatch-repo</a> </span><span id="var-link"><a href="clj-github.repos-api.html#clj-github.repos/watch-repo" id="var-tag">watch-repo</a> </span><br />
@@ -167,9 +186,11 @@ In any function that takes a 'state' argument, state is either "open" or "closed
   <br />
   <hr />
   <h2 id="clj-github.users">clj-github.users</h2>
-  by <span id="author">unknown author</span><br />
+  
   <a href="clj-github.users-api.html" id="api-link">Detailed API documentation</a><br />
   <pre id="namespace-docstr">Implements the API functions described here: <a href="http://develop.github.com/p/users.html">http://develop.github.com/p/users.html</a></pre>
+  
+  
   
   Public variables and functions:
   <span id="var-link"><a href="clj-github.users-api.html#clj-github.users/follow" id="var-tag">follow</a> </span><span id="var-link"><a href="clj-github.users-api.html#clj-github.users/search-users" id="var-tag">search-users</a> </span><span id="var-link"><a href="clj-github.users-api.html#clj-github.users/show-followers" id="var-tag">show-followers</a> </span><span id="var-link"><a href="clj-github.users-api.html#clj-github.users/show-following" id="var-tag">show-following</a> </span><span id="var-link"><a href="clj-github.users-api.html#clj-github.users/show-user-info" id="var-tag">show-user-info</a> </span><span id="var-link"><a href="clj-github.users-api.html#clj-github.users/show-watching" id="var-tag">show-watching</a> </span><span id="var-link"><a href="clj-github.users-api.html#clj-github.users/unfollow" id="var-tag">unfollow</a> </span><span id="var-link"><a href="clj-github.users-api.html#clj-github.users/user-set" id="var-tag">user-set</a> </span><br />

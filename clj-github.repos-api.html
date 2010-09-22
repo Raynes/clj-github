@@ -1,6 +1,6 @@
 <html>
   <head>
-    <title>clj-github.repos API reference (clj-github)</title>
+    <title>clj-github.repos - clj-github nil API documentation</title>
     <link href="static/favicon.png" rel="icon" />
     <link href="static/favicon.png" rel="shortcut icon" />
     <link media="all" type="text/css" href="static/clojure.css" rel="stylesheet" />
@@ -30,12 +30,17 @@ namespace.
       <div id="leftcolumn"><div style="text-align: center;"></div>
 <div class="menu">
   <div class="WikiCustomNav WikiElement wiki">
-    <a class="wiki_link" href="index.html">Overview</a><br />
-    <a class="wiki_link" href="api-index.html">API Index</a><br />
-    <a class="wiki_link" href="#">Namespaces:</a>
+    <span class="toc-header"><span id="project-name">clj-github</span> <span id="version"></span> API</span><br />
+    <ul>
+      <li><a class="wiki_link" href="index.html">Overview</a></li>
+      <li><a class="wiki_link" href="api-index.html">API Index</a></li>
+    </ul>
+    <span class="toc-header">Namespaces</span>
     <ul id="left-sidebar-list">
       <li><a href="clj-github.commits-api.html" class="wiki_link">clj-github.commits</a></li><li><a href="clj-github.core-api.html" class="wiki_link">clj-github.core</a></li><li><a href="clj-github.gists-api.html" class="wiki_link">clj-github.gists</a></li><li><a href="clj-github.issues-api.html" class="wiki_link">clj-github.issues</a></li><li><a href="clj-github.network-api.html" class="wiki_link">clj-github.network</a></li><li><a href="clj-github.objects-api.html" class="wiki_link">clj-github.objects</a></li><li><a href="clj-github.repos-api.html" class="wiki_link">clj-github.repos</a></li><li><a href="clj-github.users-api.html" class="wiki_link">clj-github.users</a></li>
     </ul>
+    
+    <a href="http://clojure.org" class="wiki_link">Clojure Home</a>
   </div>
 </div>
 </div>
@@ -94,8 +99,10 @@ namespace.
   </div>
 </div>
 </div>
-                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.repos</span></h1>
-by <span id="author">Unknown</span><br />
+                <div id="content-tag"><h1 id="overview">API for <span id="namespace-name">clj-github.repos</span>
+  - <span id="header-project">clj-github</span> <span id="header-version"></span> (<span id="header-status"></span>)
+  </h1>
+
 <br />Usage:
 <pre>
 (ns your-namespace
@@ -103,6 +110,8 @@ by <span id="author">Unknown</span><br />
 </pre><pre>
 </pre><h2>Overview</h2>
 <pre id="namespace-docstr">Impelements the API functions described here: <a href="http://develop.github.com/p/repo.html">http://develop.github.com/p/repo.html</a></pre>
+
+
 <br />
 <h2>Public Variables and Functions</h2>
 <div id="var-entry">
@@ -110,193 +119,235 @@ by <span id="author">Unknown</span><br />
   <hr />
   <h2 id="clj-github.repos/add-collaborator">add-collaborator</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (add-collaborator user repo)
+  <pre id="var-usage">Usage: (add-collaborator auth user repo)
 </pre>
   <pre id="var-docstr">Add a collaborator to a project.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/add-deploy-key">add-deploy-key</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (add-deploy-key repo title key)
+  <pre id="var-usage">Usage: (add-deploy-key auth repo title key)
 </pre>
   <pre id="var-docstr">Add a deploy key to a repo.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/create-repo">create-repo</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (create-repo name &amp; {:keys [public homepage description]})
+  <pre id="var-usage">Usage: (create-repo auth name &amp; {:keys [public homepage description], :or {public true}})
 </pre>
   <pre id="var-docstr">Create a repository. You need to supply at least name, but you can supply as many of
 :description, :homepage, :public, as you want.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/delete-repo">delete-repo</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (delete-repo repo)
+  <pre id="var-usage">Usage: (delete-repo auth repo)
 </pre>
   <pre id="var-docstr">Delete a repo. Cannot be undone.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/fork-repo">fork-repo</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (fork-repo user repo)
+  <pre id="var-usage">Usage: (fork-repo auth user repo)
 </pre>
   <pre id="var-docstr">Fork a repo.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/remove-collaborator">remove-collaborator</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (remove-collaborator user repo)
+  <pre id="var-usage">Usage: (remove-collaborator auth user repo)
 </pre>
   <pre id="var-docstr">Remove a collaborator from a project.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/remove-deploy-key">remove-deploy-key</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (remove-deploy-key repo id)
+  <pre id="var-usage">Usage: (remove-deploy-key auth repo id)
 </pre>
   <pre id="var-docstr">Remove a deploy key from a repo.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/search-repos">search-repos</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (search-repos query &amp; {:keys [language start-page]})
+  <pre id="var-usage">Usage: (search-repos auth query &amp; {:keys [language start-page]})
 </pre>
   <pre id="var-docstr">Searches for repos. Optionally supply language and start page to narrow the search.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/set-repo-info">set-repo-info</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (set-repo-info user repo key value)
+  <pre id="var-usage">Usage: (set-repo-info auth user repo key value)
 </pre>
   <pre id="var-docstr">Set info about your repo. Possible targets are description, homepage, has_wiki,
 has_downloads, and has_issues.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/set-repo-visibility">set-repo-visibility</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (set-repo-visibility repo visibility)
+  <pre id="var-usage">Usage: (set-repo-visibility auth repo visibility)
 </pre>
   <pre id="var-docstr">Set a repositories visibility. Either public or private.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/show-collaborators">show-collaborators</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-collaborators user repo)
+  <pre id="var-usage">Usage: (show-collaborators auth user repo)
 </pre>
   <pre id="var-docstr">Get a list of collaborators on a repo.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/show-contributors">show-contributors</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-contributors user repo &amp; {include-anon? :include-anon?, :or {include-anon? false}})
+  <pre id="var-usage">Usage: (show-contributors auth user repo &amp; {include-anon? :include-anon?, :or {include-anon? false}})
 </pre>
   <pre id="var-docstr">List of people who have contributed to a project. Default value of include-anon? is false.
 If set to true, will include all non-users who have contributed to this project.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/show-deploy-keys">show-deploy-keys</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-deploy-keys repo)
+  <pre id="var-usage">Usage: (show-deploy-keys auth repo)
 </pre>
   <pre id="var-docstr">Get a list of deploy keys setup for a repository.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/show-languages">show-languages</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-languages user repo)
+  <pre id="var-usage">Usage: (show-languages auth user repo)
 </pre>
   <pre id="var-docstr">Look at the languages used by a project. Values are in bytes calculated.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/show-network">show-network</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-network user repo)
+  <pre id="var-usage">Usage: (show-network auth user repo)
 </pre>
   <pre id="var-docstr">Look at a repo's full network.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/show-pushable">show-pushable</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-pushable)
+  <pre id="var-usage">Usage: (show-pushable auth)
 </pre>
   <pre id="var-docstr">List of repos that are not your own that you can push to. Must be authenticated for this
 to return something meaningful.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/show-repo-info">show-repo-info</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-repo-info user repo)
+  <pre id="var-usage">Usage: (show-repo-info auth user repo)
 </pre>
   <pre id="var-docstr">Detailed information about a repo.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/show-repos">show-repos</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-repos user)
+  <pre id="var-usage">Usage: (show-repos auth user)
 </pre>
   <pre id="var-docstr">List all the repos a user has.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/show-tags">show-tags</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (show-tags user repo)
+  <pre id="var-usage">Usage: (show-tags auth user repo)
 </pre>
   <pre id="var-docstr">List of tags on a repo.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/unwatch-repo">unwatch-repo</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (unwatch-repo user repo)
+  <pre id="var-usage">Usage: (unwatch-repo auth user repo)
 </pre>
   <pre id="var-docstr">Unwatch a repo.</pre>
+  
+  
   
 </div><div id="var-entry">
   <br />
   <hr />
   <h2 id="clj-github.repos/watch-repo">watch-repo</h2>
   <span id="var-type">function</span><br />
-  <pre id="var-usage">Usage: (watch-repo user repo)
+  <pre id="var-usage">Usage: (watch-repo auth user repo)
 </pre>
   <pre id="var-docstr">Watch a repo.</pre>
+  
+  
   
 </div>
 
