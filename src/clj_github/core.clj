@@ -45,7 +45,7 @@
                               (:username auth))
                             (or (:token auth) (:password auth))]}))]
     (if raw?
-      (->> req force :body (interpose "\n") (apply str))
+      (->> req force :body)
       (try (-> req force :body read-json (handle sift))
            (catch Exception e
              (if (= "404" (.getMessage e))
