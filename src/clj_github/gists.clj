@@ -26,7 +26,7 @@
   "Create a new gist. You can supply as many filename -> contents pairs as you like.
   Syntax highlighting is determined by extension."
   [auth & files]
-  (first (make-gist-request "new" auth 
+  (first (make-gist-request auth "new"
                             :type :post
                             :data (into {}
                                         (for [[k v] (partition 2 files)]
