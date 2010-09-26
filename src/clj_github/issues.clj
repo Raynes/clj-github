@@ -60,7 +60,7 @@
 (defn remove-label
   "Remove a label. If you supply an issue number, the label will be removed from that issue
   alone. Otherwise, the label will be removed from all issues."
-  [auth user repo label & number]
+  [auth user repo label & [number]]
   (make-request auth ["issues/label/remove" user repo label (when number number)] :sift :labels))
 
 (defn comment-issue
