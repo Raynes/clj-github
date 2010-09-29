@@ -6,7 +6,7 @@
 (defn search-issues
   "Search through a project's issues."
   [auth user repo state term]
-  (make-request auth ["issues/search " user repo state term] :sift :issues))
+  (make-request auth ["issues/search" user repo state term] :sift :issues))
 
 (defn show-issues
   "List of issues a project has."
