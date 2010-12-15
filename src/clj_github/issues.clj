@@ -8,10 +8,15 @@
   [auth user repo state term]
   (make-request auth ["issues/search" user repo state term] :sift :issues))
 
-(defn show-issues
+(defn list-issues
   "List of issues a project has."
   [auth user repo state]
   (make-request auth ["issues/list" user repo state] :sift :issues))
+
+(defn list-label-issues
+  "List of issues a project has."
+  [auth user repo label]
+  (make-request auth ["issues/list" user repo "label" label] :sift :issues))
 
 (defn show-issue
   "Shows the data on an individual issue."
@@ -46,7 +51,7 @@
                 :data (remove (comp nil? val) {"body" body "title" title})
                 :sift :issue))
 
-(defn show-labels
+(defn list-labels
   "Lists a project's issue labels."
   [auth user repo]
   (make-request auth ["issues/labels" user repo] :sift :labels))
@@ -67,4 +72,5 @@
   "Comment on an issue."
   [auth user repo number comment]
   (make-request auth ["issues/comment" user repo number]
-        	:data {:comment comment} :sift :comment))
+                :data {:comment comment} :sift :comment))
+
