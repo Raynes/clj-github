@@ -1,4 +1,22 @@
+# Java related
 pom.xml
 *jar
-lib
+*.class
+
+# Leiningen
 classes
+lib
+
+# Temp Files
+*.orig
+*~
+.*.swp
+.*.swo
+*.tmp
+
+# OS X
+.DS_Store
+
+# Logging
+*.log
+
