@@ -12,7 +12,7 @@
   [auth user]
   (make-request auth ["user/show" user] :sift :user))
 
-(defn user-set
+(defn set-user
   "Set certain information for a user. Accepted inputs for target are
   name, email, blog, company, and location."
   [auth user target value]
@@ -43,3 +43,4 @@
   "Get a list of repos that user is watching."
   [auth user]
   (make-request auth ["repos/watched" user] :sift :repositories))
+

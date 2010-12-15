@@ -13,3 +13,4 @@
   (make-request auth [user repo "network_data_chunk"]
                 :special "/"
                 :data {"nethash" nethash}))
+
