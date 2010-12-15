@@ -2,7 +2,7 @@
             it provides to users is the with-auth convenience function."}
   clj-github.core
   (:use [clojure.contrib [string :only [join]]]
-	[clj-http.client :only [request]]
+        [clj-http.client :only [request]]
         [clojure.contrib.json :only [read-json]])
   (:import java.net.URI))
 
@@ -14,7 +14,7 @@
         nil))
 
 (defn slash-join
-  "Returns a string of it's arguments separated by forward slashes."
+  "Returns a string of its arguments separated by forward slashes."
   [& args]
   (join "/" args))
 
@@ -54,3 +54,4 @@
                     "caused by giving invalid information that caused the URL to route to an "
                     "unknown page.")
                (throw e)))))))
+
