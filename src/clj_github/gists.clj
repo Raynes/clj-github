@@ -32,3 +32,4 @@
                                         (for [[k v] (partition 2 files)]
                                           [(str "files[" k "]") v]))
                             :sift :gists)))
+

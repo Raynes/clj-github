@@ -13,3 +13,4 @@
   "Show data about a specific commit."
   [auth user repo sha]
   (make-request auth ["commits/show" user repo sha] :sift :commit))
+
