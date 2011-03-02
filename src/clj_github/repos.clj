@@ -6,7 +6,7 @@
   "Searches for repos. Optionally supply language and start page to narrow the search."
   [auth query & {:keys [language start-page]}]
   (make-request auth ["repos/search" query]
-                :data {"language" language "startpage" start-page}
+                :data {"language" language "start_page" start-page}
                 :sift :repositories))
 
 (defn show-repo-info
