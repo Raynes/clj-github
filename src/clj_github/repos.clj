@@ -94,6 +94,11 @@
   [auth user repo]
   (make-request auth ["repos/show" user repo "collaborators"] :sift :collaborators))
 
+(defn show-watchers
+  "Get a list of watchers on a repo. To return the full profile of the user pass in ':full-profile? true'."
+  [auth user repo & {full-profile? :full-profile? :or {full-profile? false}}]
+  (make-request auth ["repos/show" user repo "watchers"] :data (when full-profile? {"full" 1}) :sift :watchers))
+
 (defn add-collaborator
   "Add a collaborator to a project."
   [auth user repo]
