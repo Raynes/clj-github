@@ -94,6 +94,11 @@
   [auth user repo]
   (make-request auth ["repos/show" user repo "collaborators"] :sift :collaborators))
 
+(defn show-watchers
+  "Get a list of watchers on a repo."
+  [auth user repo]
+  (make-request auth ["repos/show" user repo "watchers"] :sift :watchers))
+
 (defn add-collaborator
   "Add a collaborator to a project."
   [auth user repo]
