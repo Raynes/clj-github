@@ -1,6 +1,6 @@
 (ns clj-github.core-test
-  (:use [clj-github.core] :reload-all)
-  (:use [clojure.test]))
+  (:use clojure.test
+        clj-github.core))
 
 (deftest test-slash-join
   (let [str-case ["a" "b" "c"]
