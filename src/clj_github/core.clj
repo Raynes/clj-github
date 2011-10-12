@@ -1,22 +1,31 @@
 (ns #^{:doc "Core of clj-github. This namespace is used by the API files. Only thing useful
             it provides to users is the with-auth convenience function."}
   clj-github.core
-  (:use [clojure.contrib [string :only [join]]]
+  (:use [clojure.string :only [join]]
         [clj-http.client :only [request]]
-        [clojure.contrib.json :only [read-json]])
+        [clojure.data.json :only [read-json]])
   (:import java.net.URI))
 
-(defn create-url [rest gist? & {special :special}]
-  (URI. "http" (if gist? "gist.github.com" "github.com")
-        (if special
-          (str special rest)
-          (str "/api/" (if gist? "v1" "v2") "/json/" rest))
-        nil))
+(def ^:dynamic *auth* nil)
+
+(defmacro with-auth [auth & body]
+  (binding [*auth* ~auth]
+    ~@body))
 
 (defn slash-join
   "Returns a string of its arguments separated by forward slashes."
   [& args]
   (join "/" args))
+
+(defn create-url [rest gist? & {special :special}]
+  (let [rest (if (string? rest)
+               rest
+               (apply slash-join (filter identity rest)))]
+    (URI. "http" (if gist? "gist.github.com" "github.com")
+          (if special
+            (str special rest)
+            (str "/api/" (if gist? "v1" "v2") "/json/" rest))
+          nil)))
 
 (defn t-to-n
   "Returns 1 for true and 0 for false"
@@ -29,21 +38,24 @@
   ([data sifter] (if-let [result (:error data)] result (if sifter (sifter data) data)))
   ([data] (handle data identity)))
 
+(defn extract-auth [auth]
+  (when auth
+    [(if (:token *auth*)
+       (str (:username *auth*) "/token")
+       (:username *auth*))
+     (or (:token *auth*) (:password *auth*))]))
+
 (defn make-request
   "Constructs a basic authentication request. Path is either aseq of URL segments that will
   be joined together with slashes, or a full string depicting a path that will be used directly.
   The path should never start with a forward slash. It's added automatically."
-  [auth path & {:keys [type data sift raw? gist? special] :or {type :get data {} raw? false gist? false}}]
+  [path & {:keys [type data sift raw? gist? special] :or {type :get data {} raw? false gist? false}}]
   (let [req (delay
              (request
               {:method type
-               :url (str (create-url (if (string? path) path (apply slash-join (filter identity path)))
-                                     gist? :special special))
+               :url (str (create-url path  gist? :special special))
                :query-params (into {} (filter #(val %) data))
-               :basic-auth [(if (:token auth)
-                              (str (:username auth) "/token")
-                              (:username auth))
-                            (or (:token auth) (:password auth))]}))]
+               :basic-auth (extract-auth *auth*)}))]
     (if raw?
       (->> req force :body)
       (try (-> req force :body read-json (handle sift))
