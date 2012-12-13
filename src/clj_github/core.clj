@@ -46,9 +46,9 @@
      (or (:token *auth*) (:password *auth*))]))
 
 (defn make-request
-  "Constructs a basic authentication request. Path is either aseq of URL segments that will
-  be joined together with slashes, or a full string depicting a path that will be used directly.
-  The path should never start with a forward slash. It's added automatically."
+  "Constructs a basic authentication request. Path is either a seq of URL segments to be joined
+  with slashes, or a full string depicting a path that will be used directly.
+  The path should never start with a forward slash; it will be added automatically."
   [path & {:keys [type data sift raw? gist? special] :or {type :get data {} raw? false gist? false}}]
   (let [req (delay
              (request
